@@ -1,11 +1,14 @@
-body{
-	margin: 0 0 0 0;
+html, body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 input{
 	display: block;
 }
 
 #popout-background{
+	z-index: 1;
 	background-color: grey;
 	overflow: hidden;
 	height:100vh;
@@ -24,49 +27,52 @@ input{
 }
 
 #content-container{
-	height: 100vh;
-	display: none;
+	z-index: -1;
+	height: 100%;
+	width: 100%;
 }
 
 #control-content{
+	height: 10%;
 	width: 100%;
-	height: 90px;
 	background-color: red;
 }
 
 #map-canvas{
-	width: 50%;
 	height: 90%;
-	background-color: green;
-	float: left;
-}
-
-#event-content{
 	width: 50%;
-	height: 90%;
+	margin: 0;
+	padding: 0;
 	background-color: blue;
 	float: left;
 }
 
+#event-content{
+	height: 90%;
+	width: 50%;
+	background-color: green;
+	float: left;
+}
+
 #button-cluster{
-	padding-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
+	
 }
 
 .control-buttons{
 	background-color: green;
-	overflow: hidden;
+	margin-right: 10px;
 	float: left;
-	margin: 0 5px 0 0;
 }
 
 .inner-button-text{
-	display: inline;
-	padding: 5px 5px 5px 5px;
-	margin: 2px 2px 2px 2px;
+
+}
+
+.event{
+	display: block;
 }
 
 .control-buttons:hover{
-	background-color:blue;
+	background-color: blue;
+	cursor: pointer;
 }
