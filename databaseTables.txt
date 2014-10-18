@@ -1,4 +1,5 @@
 usercodes
+create_id varchar20
 usercode(varchar(20))
 first_name varchar(255))
 last_name varchar(255))

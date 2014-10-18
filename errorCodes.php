@@ -12,3 +12,8 @@ E07 means last_name is incorrect
 E08 means email is incorrect
 E09 means phone_number is incorrect
 E10 means timestamp is incorrect
+
+E11 means create_id is incorrect
+E12 means gps_lat is incorrect
+E13 means gps_long is incorrect
+E14 means gps_error is incorrect
