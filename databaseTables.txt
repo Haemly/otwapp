@@ -1,15 +1,16 @@
-USERCODES TABLE
-id, name, email, phone number, timestamp
+usercodes
+usercode, first_name, last_name,email,phone, timestamp
 
 
-
-CONNECTED DEVICES
-id, createID, connect_ID, active/inactive field [0 or 1], timestamp
-
+events
+usercode, text, eta, time, done
 
 
-CURRENT GPS
+driver_positions
 creatID, GPSlat, GPSlong, GPSerror, timestamp
 
-EVENTS
-usercode, text, eta, time, done
+
+
+device_connections
+createID, connect_ID, active/inactive field [0 or 1], timestamp
+

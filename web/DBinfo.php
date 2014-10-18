@@ -1,9 +1,9 @@
 <?php
 
 //database access variables
-$userName = "bobbyw19_paul";
+$username = "bobbyw19_paul";
 $password = "PaulH@ckathon";
-$dbName = "bobbyw19_otw";
+$db_name = "bobbyw19_otw";
 $path = "localhost";
 
 ?>

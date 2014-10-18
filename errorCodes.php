@@ -1,4 +1,6 @@
 error codes
 
-S means success
-E means failure
+
+E01 means failure to connect to database
+E02 means missing data
+E03 means sql query error
