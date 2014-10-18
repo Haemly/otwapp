@@ -25,6 +25,19 @@
     [[appGlobals sharedGlobals] setDatabasePath:[documentDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", [[appGlobals sharedGlobals] databaseName]]]];
     
     [self checkAndCreateDatabase];
+    
+    //Check if initial info was set, and go to appropriate screen
+    if ([self checkIfInfoEntered]) {
+        [self performSegueWithIdentifier:@"segueToMain" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"segueToEnterInfo" sender:self];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //Hide the nav bar
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,11 +46,40 @@
 }
 
 -(BOOL)checkIfInfoEntered {
-    BOOL entered;
+    NSString *setinfo;
     
+    if (sqlite3_open([[[appGlobals sharedGlobals] databasePath] UTF8String], &_database) == SQLITE_OK)
+    {
+        NSString *sqlStatement = [NSString stringWithFormat:@"SELECT infoset FROM initialload"];
+        const char *sql_stmt = [sqlStatement UTF8String];
+        
+        if (sqlite3_prepare_v2(_database, sql_stmt, -1, &_compiledStatement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(_compiledStatement) == SQLITE_ROW)
+            {
+                setinfo = ((char *)sqlite3_column_text(_compiledStatement, 0)) ? [NSString stringWithUTF8String:(char *)sqlite3_column_text(_compiledStatement, 0)] : @"";
+            } else {
+                NSLog(@"Error: %s", sqlite3_errmsg(_database));
+            }
+        } else {
+            NSLog(@"Error: %s", sqlite3_errmsg(_database));
+        }
+        
+        sqlite3_finalize(_compiledStatement);
+    } else {
+        NSLog(@"Error: %s", sqlite3_errmsg(_database));
+    }
+    sqlite3_close(_database);
     
+    //If setinto is set to 1 in localdatabase, skip set info screen
     
-    return entered;
+    if ([setinfo isEqualToString:@"1"]) {
+        return YES;
+    } else {
+        return NO;
+    }
+    
+    return NO;
 }
 
 -(void)checkAndCreateDatabase

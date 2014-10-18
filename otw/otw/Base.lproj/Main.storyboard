@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Initial Load View Controller-->
         <scene sceneID="IA0-1j-eyQ">
             <objects>
-                <viewController id="fdD-mg-jho" sceneMemberID="viewController">
+                <viewController id="fdD-mg-jho" customClass="InitialLoadViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HdX-Uv-Jxk"/>
                         <viewControllerLayoutGuide type="bottom" id="IgQ-o0-xqM"/>
@@ -18,6 +18,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="mwS-F6-4am"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="push" identifier="segueToEnterInfo" id="DS6-gB-mg2"/>
+                        <segue destination="ufe-1R-TwE" kind="push" identifier="segueToMain" id="5iv-1P-zit"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMH-Zg-9EE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,14 +64,78 @@
                                 <state key="normal" title="Enter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="enterInfoButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CgB-0U-IIQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="brb-NU-g2l"/>
+                    <connections>
+                        <outlet property="email" destination="9I9-p4-2vo" id="9iV-d4-yag"/>
+                        <outlet property="firstName" destination="e8E-qZ-v3c" id="ndg-gT-E4I"/>
+                        <outlet property="lastName" destination="Sih-jc-Nq3" id="6Jr-1g-fG1"/>
+                        <outlet property="phoneNumber" destination="mIU-bD-hbh" id="aCJ-eO-kCE"/>
+                        <segue destination="ufe-1R-TwE" kind="push" identifier="infoToMain" id="baH-4L-CiQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="338"/>
+            <point key="canvasLocation" x="869" y="-4"/>
+        </scene>
+        <!--Main Screen View Controller-->
+        <scene sceneID="GIh-vM-qXB">
+            <objects>
+                <viewController id="ufe-1R-TwE" customClass="MainScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6rP-vM-KIz"/>
+                        <viewControllerLayoutGuide type="bottom" id="slE-nw-Xzt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Z2-tF-bue">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-RH-2fM">
+                                <rect key="frame" x="129" y="131" width="63" height="30"/>
+                                <state key="normal" title="Generate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="generateButton:" destination="ufe-1R-TwE" eventType="touchUpInside" id="4W7-J5-B5s"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Roz-wB-t6v">
+                                <rect key="frame" x="71" y="93" width="179" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIb-YZ-28q">
+                                <rect key="frame" x="71" y="175" width="179" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngA-LA-gsH">
+                                <rect key="frame" x="133" y="213" width="59" height="30"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectButton:" destination="ufe-1R-TwE" eventType="touchUpInside" id="dy0-Xd-q1V"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lNC-2W-C67"/>
+                    <connections>
+                        <outlet property="textfieldConnectCode" destination="gIb-YZ-28q" id="zic-yj-cyt"/>
+                        <outlet property="textfieldGenerateCode" destination="Roz-wB-t6v" id="R4A-Ml-AUV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cmD-ab-Pv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="869" y="706"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vtV-J8-S2V">
@@ -93,4 +161,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="baH-4L-CiQ"/>
+    </inferredMetricsTieBreakers>
 </document>
