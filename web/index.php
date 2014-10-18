@@ -59,7 +59,7 @@ $(document).ready(function(){
 <script type="text/javascript">
   function initialize() {
 	var mapOptions = {
-	  center: { lat: -34.397, lng: 150.644},
+	  center: { lat: 46.600, lng: -60.500},
 	  zoom: 6
 	};
 	var map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -80,7 +80,7 @@ $(document).ready(function(){
 	</div>
 	<div id="content-container">
 		<div id="control-content">
-		controls
+			<div id="control-label"><div id="control-label-text">Controls</div></div>
 			<div id="button-cluster">
 				<div id="wait" class="control-buttons"><div class="inner-button-text">Wait</div></div>
 				<div id="continue" class="control-buttons"><div class="inner-button-text">Continue</div></div>

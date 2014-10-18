@@ -68,13 +68,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 #button-cluster{
+	height: 100%;
+	width: 70%;
 	margin: 0 auto 0 auto;
 	overflow: hidden;
 }
+
+#control-label{
+	float: left;
+	width: 9em;
+	height: 100%;
+	display: inline;
+}
+
+#control-label-text{
+	margin: 0.4em 0 0 0.9em;
+	font-size: 2em;
+	text-align: center;
+}
+
 .control-buttons{
 	display:inline-block;
 	width:9em;
 	height:2em;
+	margin: 1.2em 0.3em 0 0;
 	color:#333;
 	line-height:2;
 	text-align:center;
