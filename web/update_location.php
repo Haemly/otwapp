@@ -29,9 +29,9 @@ $error_msg = "";
 if (!empty($create_id) && !empty($gps_lat) && !empty($gps_long) 
 	&& !empty($gps_error) && !empty($timestamp && validConnection()) {
 	
-	//connect to database or error
-	$conn = mysql_connect("$db_name","$username","$password");
-	msyql_select_db("$db_name", $conn ) or die(echo "E01"); 
+	//Set up database connection
+	$conn = mysql_connect($path, $username, $password) or die(mysql_error());
+	$db = mysql_select_db($db_name, $conn) or die(mysql_error());
 	
 		//put new location in database driver_positions table
 		$sql_query_update = sprintf(" INSERT INTO driver_positions  

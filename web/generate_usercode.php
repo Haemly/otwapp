@@ -1,7 +1,5 @@
-<!--for generating 20 character alphanumeric codes-->
 <?php
-echo "test";
-//reference to master db connection data
+	 //reference to master db connection data
 	require_once('DBinfo.php');
 	
 	//if iphone requests a code then generate and return
@@ -11,24 +9,22 @@ echo "test";
 	for($i=0; $i<10; $i++) { $mdun = str_shuffle($mdun); }
 	$mdun = substr($mdun,0,20);
 	
-	$conn = mysql_connect("$db_name","$username","$password");
-	msyql_select_db("$db_name", $conn ) or die("E01"); 
+	//Set up database connection
+	$conn = mysql_connect($path, $username, $password) or die(mysql_error());
+	$db = mysql_select_db($db_name, $conn) or die(mysql_error());
 	
 	//query database for duplicate codes or error
-	$sql_query_existing = sprintf("SELECT * FROM usercodes WHERE usercode = '%s'", mysql_real_escape_string($mdun));
-	$existing_rows = mysql_query($sql_query_existing) or die ("E02");
-	$resulting_rows = mysql_num_rows($existing_rows);
+	$sql = "SELECT * FROM usercodes WHERE usercode = '$mdun'";
+	$result = mysql_query($sql) or die(mysql_error());
+	$num = mysql_num_rows($result);
 	
 	//test for duplicate code
-	if ($resulting_rows > 0) {
+	if ($num > 0) {
 		echo "E04";
-
 	} else {
-	echo $mdun;
-	}
+		echo $mdun;
+	} 
 
-
-
-
+	mysql_close($conn);
 
 ?>

@@ -29,9 +29,9 @@ $error_msg = "";
 if (!empty($usercode) && !empty($first_name) && !empty($last_name) 
 	&& !empty($phone_number) && !empty($timestamp) {
 	
-	//connect to database or error
-	$conn = mysql_connect("$db_name","$username","$password");
-	msyql_select_db("$db_name", $conn ) or die("E01"); 
+	//Set up database connection
+	$conn = mysql_connect($path, $username, $password) or die(mysql_error());
+	$db = mysql_select_db($db_name, $conn) or die(mysql_error());
 	
 	//query database for duplicate codes or error
 	$sql_query_existing = sprintf("SELECT * FROM usercodes WHERE usercode = '%s'", mysql_real_escape_string($usercode));
