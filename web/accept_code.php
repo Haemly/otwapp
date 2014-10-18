@@ -34,26 +34,41 @@ if (!empty($usercode) && !empty($first_name) && !empty($last_name)
 	msyql_select_db("$db_name", $conn ) or die("E01"); 
 	
 	//query database for duplicate codes or error
-	$sql_query_existing = sprintf("INSERT INTO usercodes 
-	(usercode, first_name, last_name, phone_number, timestamp) 
-	VALUES ('%s','%s','%s','%s','%s',)", mysql_real_escape_string());
+	$sql_query_existing = sprintf("SELECT * FROM usercodes WHERE usercode = '%s'", mysql_real_escape_string($usercode));
 	$existing_rows = mysql_query() or die ("E02");
+	$resulting_rows = mysql_num_rows($Existing_rows);
 	
+	//test for duplicate code
+	if ($resulting_rows > 0) {
+		//duplicate exists
+		echo "E04"
+		
+		} else {
+		//place code in database
+		$sql_query_insert = sprintf("INSERT INTO usercodes 
+		(usercode, first_name, last_name, phone_number, timestamp) 
+		VALUES ('%s','%s','%s','%s','%s',)", 
+		mysql_real_escape_string($usercode)
+		mysql_real_escape_string($first_name)
+		mysql_real_escape_string($last_name)
+		mysql_real_escape_string($phone_number)
+		mysql_real_escape_string($timestamp));
+		$response = mysql_query($sql_query_insert) or die ("E03");
 	
+	//close db connection
+	mysql_close($conn);
 	
+	} 
 	
+	} else (
+	//say what data is missing
+	if ((empty($usercode) { echo "E05"};
+	if ((empty($first_name) { echo "E06"};
+	if ((empty($last_name) { echo "E07"};
+	if ((empty($email) { echo "E08"};
+	if ((empty($phone_number) { echo "E09"};
+	if ((empty($timestamp) { echo "E10"};
 	
 	}
- 
-
-
-
-
-
-
-
-
-
-
-
+	
 ?>
