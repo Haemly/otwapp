@@ -1,4 +1,0 @@
-otwapp
-======
-
-Otw App Hackathon
