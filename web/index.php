@@ -9,12 +9,6 @@ $(document).ready(function(){
 	$("#popout").hide();
 	$("#popout").fadeIn("slow");
 });
-
-/*$(document).ready(function(){
-  $("#go-button").click(function(){
-    $("#popout-background").fadeOut("slow");
-  });
-});*/
 </script>
 <script>
 	$(document).ready(function(){
@@ -33,15 +27,29 @@ $(document).ready(function(){
 				$("#popout-background").fadeOut("slow");
 			}
 		});
-		
-		$("#button1").click(function(){
-			$("#event-content").append("<div class=\"event\"></div>");
-			$(".event").text("Wait requested");
+		var dt = new Date();
+		var dtHour = dt.getHours();
+		if(dtHour > 12){
+			dtHour -= 12;
+		}
+		var time = dtHour + ":" + dt.getMinutes();
+		var i = 0;
+		$("#wait").click(function(){
+			if(i % 2 == 0){
+				$("#event-content").append("<div class=\"event\">Wait requested at " + time + ".</div>");
+			} else if(i % 2 != 0){
+				$("#event-content").append("<div class=\"event2\">Wait requested at " + time + ".</div>");
+			}
+			i++;
 		});
 		
-		$("#button2").click(function(){
-			$("#event-content").append("<div class=\"event\"></div>");
-			$(".event").text("Continue requested");
+		$("#continue").click(function(){
+			if(i % 2 == 0){
+				$("#event-content").append("<div class=\"event\">Continue requested at " + time + ".</div>");
+			} else if(i % 2 != 0){
+				$("#event-content").append("<div class=\"event2\">Continue requested at " + time + ".</div>");
+			}
+			i++;
 		});
 	});
 </script>
@@ -74,16 +82,18 @@ $(document).ready(function(){
 		<div id="control-content">
 		controls
 			<div id="button-cluster">
-				<div id="button1" class="control-buttons"><div class="inner-button-text">add this</div></div>
-				<div id="button2" class="control-buttons"><div class="inner-button-text">add this</div></div>
-				<div id="button3" class="control-buttons"><div class="inner-button-text">add this</div></div>
-				<div id="button4" class="control-buttons"><div class="inner-button-text">add this</div></div>
+				<div id="wait" class="control-buttons"><div class="inner-button-text">Wait</div></div>
+				<div id="continue" class="control-buttons"><div class="inner-button-text">Continue</div></div>
+				<!--<div id="unused" class="control-buttons"><div class="inner-button-text">unused</div></div>
+				<div id="unused" class="control-buttons"><div class="inner-button-text">unused</div></div>-->
 			</div>
 		</div>
 		<div id="map-canvas">
 		</div>
 		<div id="event-content">
-			event log
+			<div id="event-title">
+				event log
+			</div>
 		</div>
 	</div>
 </body>
