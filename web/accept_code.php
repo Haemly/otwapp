@@ -1,7 +1,7 @@
-//script to generate a unique code
+//script to accept iphone code and place in database table usercodes
 <?php
 
-
+//reference to master db connection data
 require_once('DBinfo.php');
 
 //incoming code from iphone, deserialize and test for duplicate in database
@@ -29,14 +29,14 @@ $error_msg = "";
 if (!empty($usercode) && !empty($first_name) && !empty($last_name) 
 	&& !empty($phone_number) && !empty($timestamp) {
 	
-	//connect to database or error
-	$conn = mysql_connect("$db_name","$username","$password");
-	msyql_select_db("$db_name", $conn ) or die("E01"); 
+	//Set up database connection
+	$conn = mysql_connect($path, $username, $password) or die(mysql_error());
+	$db = mysql_select_db($db_name, $conn) or die(mysql_error());
 	
 	//query database for duplicate codes or error
 	$sql_query_existing = sprintf("SELECT * FROM usercodes WHERE usercode = '%s'", mysql_real_escape_string($usercode));
-	$existing_rows = mysql_query() or die ("E02");
-	$resulting_rows = mysql_num_rows($Existing_rows);
+	$existing_rows = mysql_query($sql_query_existing) or die ("E02");
+	$resulting_rows = mysql_num_rows($existing_rows);
 	
 	//test for duplicate code
 	if ($resulting_rows > 0) {

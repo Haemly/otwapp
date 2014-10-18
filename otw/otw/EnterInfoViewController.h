@@ -11,7 +11,13 @@
 
 @interface EnterInfoViewController : UIViewController
 
+@property (nonatomic) sqlite3 *database;
 @property (nonatomic) sqlite3_stmt *compiledStatement;
 
+- (IBAction)enterInfoButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *firstName;
+@property (strong, nonatomic) IBOutlet UITextField *lastName;
+@property (strong, nonatomic) IBOutlet UITextField *email;
+@property (strong, nonatomic) IBOutlet UITextField *phoneNumber;
 @end
 

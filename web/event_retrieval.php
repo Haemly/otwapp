@@ -1,5 +1,6 @@
-//get info from database about delays etc
+//get info from database to push to specific device/devices
 <?php
+
 
 
 

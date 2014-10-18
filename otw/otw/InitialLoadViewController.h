@@ -11,6 +11,7 @@
 
 @interface InitialLoadViewController : UIViewController
 
+@property (nonatomic) sqlite3 *database;
 @property (nonatomic) sqlite3_stmt *compiledStatement;
 
 @end
