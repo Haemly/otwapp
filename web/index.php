@@ -31,10 +31,25 @@ $(document).ready(function(){
 			} else{
 				//TODO connect to php file
 				$("#popout-background").fadeOut("slow");
+				$("#content-container").css("display" , "block");
 			}
 		});
 	});
 </script>
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8nP8zW5doATgHCBiJCaGe4r5cNeS1V1g">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </head>
 <body>
 	<div id="popout-background">
@@ -47,14 +62,14 @@ $(document).ready(function(){
 	</div>
 	<div id="content-container">
 		<div id="control-content">
-			controls
-			<button id="button1">add this</button>
-			<button id="button1">add this</button>
-			<button id="button1">add this</button>
-			<button id="button1">add this</button>
+			<div id="button-cluster">
+				<div id="button1" class="control-buttons"><div class="inner-button-text">add this</div></div>
+				<div id="button2" class="control-buttons"><div class="inner-button-text">add this</div></div>
+				<div id="button3" class="control-buttons"><div class="inner-button-text">add this</div></div>
+				<div id="button4" class="control-buttons"><div class="inner-button-text">add this</div></div>
+			</div>
 		</div>
-		<div id="map-content">
-			map
+		<div id="map-canvas">
 		</div>
 		<div id="event-content">
 			event log
