@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "sqlite3.h"
 
-@interface ViewController : UIViewController
+@interface EnterInfoViewController : UIViewController
 
+@property (nonatomic) sqlite3_stmt *compiledStatement;
 
 @end
 

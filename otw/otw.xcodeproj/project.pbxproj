@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C5253A6719F2BCCF0082D339 /* appGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A6619F2BCCF0082D339 /* appGlobals.m */; };
+		C5253A6B19F2CCFE0082D339 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5253A6A19F2CCFE0082D339 /* libsqlite3.dylib */; };
+		C5253A6D19F2D1DF0082D339 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C5253A6C19F2D1DF0082D339 /* database.sqlite */; };
+		C5253A7019F2D26B0082D339 /* InitialLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A6F19F2D26B0082D339 /* InitialLoadViewController.m */; };
 		C574D0C119F2BC3400134608 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C019F2BC3400134608 /* main.m */; };
 		C574D0C419F2BC3400134608 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C319F2BC3400134608 /* AppDelegate.m */; };
-		C574D0C719F2BC3400134608 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C619F2BC3400134608 /* ViewController.m */; };
+		C574D0C719F2BC3400134608 /* EnterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C619F2BC3400134608 /* EnterInfoViewController.m */; };
 		C574D0CA19F2BC3400134608 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C574D0C819F2BC3400134608 /* Main.storyboard */; };
 		C574D0CC19F2BC3400134608 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C574D0CB19F2BC3400134608 /* Images.xcassets */; };
 		C574D0CF19F2BC3400134608 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C574D0CD19F2BC3400134608 /* LaunchScreen.xib */; };
@@ -30,13 +33,17 @@
 /* Begin PBXFileReference section */
 		C5253A6519F2BCCF0082D339 /* appGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appGlobals.h; sourceTree = "<group>"; };
 		C5253A6619F2BCCF0082D339 /* appGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appGlobals.m; sourceTree = "<group>"; };
+		C5253A6A19F2CCFE0082D339 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C5253A6C19F2D1DF0082D339 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		C5253A6E19F2D26B0082D339 /* InitialLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialLoadViewController.h; sourceTree = "<group>"; };
+		C5253A6F19F2D26B0082D339 /* InitialLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialLoadViewController.m; sourceTree = "<group>"; };
 		C574D0BB19F2BC3400134608 /* otw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = otw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C574D0BF19F2BC3400134608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C574D0C019F2BC3400134608 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C574D0C219F2BC3400134608 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C574D0C319F2BC3400134608 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C574D0C519F2BC3400134608 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C574D0C619F2BC3400134608 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C574D0C519F2BC3400134608 /* EnterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterInfoViewController.h; sourceTree = "<group>"; };
+		C574D0C619F2BC3400134608 /* EnterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterInfoViewController.m; sourceTree = "<group>"; };
 		C574D0C919F2BC3400134608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C574D0CB19F2BC3400134608 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C574D0CE19F2BC3400134608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -50,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5253A6B19F2CCFE0082D339 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +74,7 @@
 		C574D0B219F2BC3400134608 = {
 			isa = PBXGroup;
 			children = (
+				C5253A6A19F2CCFE0082D339 /* libsqlite3.dylib */,
 				C574D0BD19F2BC3400134608 /* otw */,
 				C574D0D719F2BC3400134608 /* otwTests */,
 				C574D0BC19F2BC3400134608 /* Products */,
@@ -88,8 +97,10 @@
 				C5253A6619F2BCCF0082D339 /* appGlobals.m */,
 				C574D0C219F2BC3400134608 /* AppDelegate.h */,
 				C574D0C319F2BC3400134608 /* AppDelegate.m */,
-				C574D0C519F2BC3400134608 /* ViewController.h */,
-				C574D0C619F2BC3400134608 /* ViewController.m */,
+				C574D0C519F2BC3400134608 /* EnterInfoViewController.h */,
+				C574D0C619F2BC3400134608 /* EnterInfoViewController.m */,
+				C5253A6E19F2D26B0082D339 /* InitialLoadViewController.h */,
+				C5253A6F19F2D26B0082D339 /* InitialLoadViewController.m */,
 				C574D0C819F2BC3400134608 /* Main.storyboard */,
 				C574D0CB19F2BC3400134608 /* Images.xcassets */,
 				C574D0CD19F2BC3400134608 /* LaunchScreen.xib */,
@@ -101,6 +112,7 @@
 		C574D0BE19F2BC3400134608 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C5253A6C19F2D1DF0082D339 /* database.sqlite */,
 				C574D0BF19F2BC3400134608 /* Info.plist */,
 				C574D0C019F2BC3400134608 /* main.m */,
 			);
@@ -204,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5253A6D19F2D1DF0082D339 /* database.sqlite in Resources */,
 				C574D0CA19F2BC3400134608 /* Main.storyboard in Resources */,
 				C574D0CF19F2BC3400134608 /* LaunchScreen.xib in Resources */,
 				C574D0CC19F2BC3400134608 /* Images.xcassets in Resources */,
@@ -225,7 +238,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5253A6719F2BCCF0082D339 /* appGlobals.m in Sources */,
-				C574D0C719F2BC3400134608 /* ViewController.m in Sources */,
+				C5253A7019F2D26B0082D339 /* InitialLoadViewController.m in Sources */,
+				C574D0C719F2BC3400134608 /* EnterInfoViewController.m in Sources */,
 				C574D0C419F2BC3400134608 /* AppDelegate.m in Sources */,
 				C574D0C119F2BC3400134608 /* main.m in Sources */,
 			);
