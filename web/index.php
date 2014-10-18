@@ -72,10 +72,16 @@ $(document).ready(function(){
 <body>
 	<div id="popout-background">
 		<div id="popout">
-			Enter your code
-			<input type="text" id="input"/>
+			<div id="popout-description-text">
+				Enter your code
+			</div>
+			<div id="input-container">
+				<input type="text" id="input"/>
+			</div>
 			<div id="input-error"></div>
-			<button id="go-button">Go</button>
+			<div id="go-button-container">
+				<div id="go-button"><div id="go-inner-button-text">GO</div></div>
+			</div>
 		</div>
 	</div>
 	<div id="content-container">

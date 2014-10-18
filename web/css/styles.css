@@ -4,7 +4,19 @@ html, body{
 	padding: 0;
 }
 input{
-	display: block;
+    border: 6px solid #F7F9FA;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.06) inset, 0 0 1px #95a2a7 inset;
+    -webkit-box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.06) inset, 0 0 1px #95A2A7 inset;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.06) inset, 0 0 1px #95A2A7 inset;
+    height: 2.5em;
+    width: 11.5em;
+    display: block;
+	margin: 0 auto 0 auto;
+	font-size: 2em;
+	text-align: center;
 }
 
 #popout-background{
@@ -24,6 +36,44 @@ input{
 #popout-message{
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#popout-description-text{
+
+}
+
+#input-container{
+
+}
+
+#input-error{
+
+}
+
+#go-button{
+	width:9em;
+	height:3em;
+	margin: 1.2em auto 0 auto;
+	color:#333;
+	line-height:2;
+	text-align:center;
+	text-decoration:none;
+	font-weight:900;
+	font-size: 2em;
+	background-color: red;
+}
+
+#go-button:hover{
+	background-color: blue;
+}
+
+#go-button-container{
+	margin: 0 auto 0 auto;
+}
+
+#inner-go-button-text{
+	overflow: auto;
+	
 }
 
 #content-container{
