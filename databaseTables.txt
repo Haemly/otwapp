@@ -24,7 +24,7 @@ active tinyint4
 
 
 driver_positions
-ceate_id carchar20
+create_id carchar20
 gps_lat varchar25
 gps_long varchar255
 gps_error int11
