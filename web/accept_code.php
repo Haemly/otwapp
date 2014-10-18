@@ -33,8 +33,12 @@ if (!empty($usercode) && !empty($first_name) && !empty($last_name)
 	$conn = mysql_connect("$db_name","$username","$password");
 	msyql_select_db("$db_name", $conn ) or die("E01"); 
 	
-	//query database for duplicate codes
-	$sql_query_existing = sprintf("INSERT INTO usercodes (usercode, first_name, last_name, phone_number, timestamp) VALUES ('%s','%s','%s','%s','%s',)", mysql_real_escape_string());
+	//query database for duplicate codes or error
+	$sql_query_existing = sprintf("INSERT INTO usercodes 
+	(usercode, first_name, last_name, phone_number, timestamp) 
+	VALUES ('%s','%s','%s','%s','%s',)", mysql_real_escape_string());
+	$existing_rows = mysql_query() or die ("E02");
+	
 	
 	
 	
