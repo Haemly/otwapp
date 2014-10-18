@@ -1,16 +1,33 @@
 usercodes
-usercode, first_name, last_name,email,phone, timestamp
+usercode(varchar(20))
+first_name varchar(255))
+last_name varchar(255))
+email  varchar(255))
+phone (varchar(20))
+timestamp (int(11))
+
+
+connected_devices
+usercode varchar20
+create_id varchar20
+connected_id varchar20
+active tinyint4
+timestamp int11
 
 
 events
-usercode, text, eta, time, done
+usercode varchar20
+text text
+eta varchar20
+done tinyint4
+active tinyint4
 
 
 driver_positions
-creatID, GPSlat, GPSlong, GPSerror, timestamp
+ceate_id carchar20
+gps_lat varchar25
+gps_long varchar255
+gps_error int11
+timestamp int11 
 
-
-
-device_connections
-createID, connect_ID, active/inactive field [0 or 1], timestamp
 
