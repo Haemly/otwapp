@@ -60,7 +60,7 @@ if (!empty($usercode) && !empty($first_name) && !empty($last_name)
 	
 	} 
 	
-	} else (
+	} else {
 	//say what data is missing
 	if ((empty($usercode) { echo "E05"};
 	if ((empty($first_name) { echo "E06"};
