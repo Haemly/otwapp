@@ -15,5 +15,9 @@
 @property (nonatomic, strong) NSString* databasePath;
 @property (nonatomic, strong) NSString* databaseName;
 
+@property (nonatomic, strong) NSString* usercode;
+@property (nonatomic, strong) NSString* createID;
+@property (nonatomic, strong) NSString* connectID;
+
 
 @end

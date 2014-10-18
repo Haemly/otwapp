@@ -27,6 +27,9 @@
     if (self = [super init])
     {
         _databaseName = @"database.sqlite";
+        _usercode = @"";
+        _createID = @"";
+        _connectID = @"";
     }
     
     return self;

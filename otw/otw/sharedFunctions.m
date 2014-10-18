@@ -13,14 +13,13 @@
 + (NSString *)generateCode {
     //Request code from php
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://otw.bobbywhite.ca/generate_code.php"]];
+    [request setURL:[NSURL URLWithString:@"http://otw.bobbywhite.ca/generate_usercode.php"]];
     
     //Response
     NSURLResponse *response;
     NSError *error2;
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error2];
     NSString *responseMsg = [[NSString alloc] initWithData:POSTReply encoding:NSUTF8StringEncoding];
-    NSLog(@"Random Code: %@", responseMsg);
     
     return responseMsg;
 }
