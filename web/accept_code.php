@@ -9,7 +9,7 @@ $json = file_get_contents('php://input');
 $obj = json_decode($json);
 
 //variables
-$userCode = "";
+$usercode = "";
 $first_name = ""; 
 $last_name = ""; 
 $phone_number = ""; 

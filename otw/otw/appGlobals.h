@@ -13,6 +13,7 @@
 + (id)sharedGlobals;
 
 @property (nonatomic, strong) NSString* databasePath;
+@property (nonatomic, strong) NSString* databaseName;
 
 
 @end
