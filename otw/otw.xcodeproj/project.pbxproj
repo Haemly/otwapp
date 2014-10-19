@@ -13,6 +13,8 @@
 		C5253A7319F2D8670082D339 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A7219F2D8670082D339 /* MainScreenViewController.m */; };
 		C5253A7719F2E3630082D339 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C5253A7619F2E3630082D339 /* database.sqlite */; };
 		C5253A7A19F2EFA80082D339 /* sharedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A7919F2EFA80082D339 /* sharedFunctions.m */; };
+		C5253A8019F332C70082D339 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A7F19F332C70082D339 /* DriverViewController.m */; };
+		C5253A8319F3333C0082D339 /* PassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A8219F3333C0082D339 /* PassengerViewController.m */; };
 		C574D0C119F2BC3400134608 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C019F2BC3400134608 /* main.m */; };
 		C574D0C419F2BC3400134608 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C319F2BC3400134608 /* AppDelegate.m */; };
 		C574D0C719F2BC3400134608 /* EnterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C619F2BC3400134608 /* EnterInfoViewController.m */; };
@@ -43,6 +45,10 @@
 		C5253A7619F2E3630082D339 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
 		C5253A7819F2EFA80082D339 /* sharedFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sharedFunctions.h; sourceTree = "<group>"; };
 		C5253A7919F2EFA80082D339 /* sharedFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sharedFunctions.m; sourceTree = "<group>"; };
+		C5253A7E19F332C70082D339 /* DriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriverViewController.h; path = ../DriverViewController.h; sourceTree = "<group>"; };
+		C5253A7F19F332C70082D339 /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriverViewController.m; path = ../DriverViewController.m; sourceTree = "<group>"; };
+		C5253A8119F3333C0082D339 /* PassengerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerViewController.h; sourceTree = "<group>"; };
+		C5253A8219F3333C0082D339 /* PassengerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerViewController.m; sourceTree = "<group>"; };
 		C574D0BB19F2BC3400134608 /* otw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = otw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C574D0BF19F2BC3400134608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C574D0C019F2BC3400134608 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 		C574D0BD19F2BC3400134608 /* otw */ = {
 			isa = PBXGroup;
 			children = (
+				C5253A7E19F332C70082D339 /* DriverViewController.h */,
+				C5253A7F19F332C70082D339 /* DriverViewController.m */,
 				C5253A6519F2BCCF0082D339 /* appGlobals.h */,
 				C5253A6619F2BCCF0082D339 /* appGlobals.m */,
 				C574D0C219F2BC3400134608 /* AppDelegate.h */,
@@ -108,6 +116,8 @@
 				C5253A6E19F2D26B0082D339 /* InitialLoadViewController.h */,
 				C5253A6F19F2D26B0082D339 /* InitialLoadViewController.m */,
 				C574D0C819F2BC3400134608 /* Main.storyboard */,
+				C5253A8119F3333C0082D339 /* PassengerViewController.h */,
+				C5253A8219F3333C0082D339 /* PassengerViewController.m */,
 				C5253A7119F2D8670082D339 /* MainScreenViewController.h */,
 				C5253A7219F2D8670082D339 /* MainScreenViewController.m */,
 				C5253A7819F2EFA80082D339 /* sharedFunctions.h */,
@@ -248,9 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5253A6719F2BCCF0082D339 /* appGlobals.m in Sources */,
+				C5253A8319F3333C0082D339 /* PassengerViewController.m in Sources */,
 				C5253A7019F2D26B0082D339 /* InitialLoadViewController.m in Sources */,
 				C574D0C719F2BC3400134608 /* EnterInfoViewController.m in Sources */,
 				C5253A7A19F2EFA80082D339 /* sharedFunctions.m in Sources */,
+				C5253A8019F332C70082D339 /* DriverViewController.m in Sources */,
 				C5253A7319F2D8670082D339 /* MainScreenViewController.m in Sources */,
 				C574D0C419F2BC3400134608 /* AppDelegate.m in Sources */,
 				C574D0C119F2BC3400134608 /* main.m in Sources */,

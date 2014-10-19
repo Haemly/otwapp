@@ -84,6 +84,25 @@
             </objects>
             <point key="canvasLocation" x="869" y="-4"/>
         </scene>
+        <!--Passenger View Controller-->
+        <scene sceneID="q17-Y9-4oP">
+            <objects>
+                <viewController id="r29-sJ-SLy" customClass="PassengerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ryI-cu-qhc"/>
+                        <viewControllerLayoutGuide type="bottom" id="NNi-tV-SHx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NpR-2A-Kdp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SJf-14-Tr0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N1T-HL-UxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349" y="-4"/>
+        </scene>
         <!--Main Screen View Controller-->
         <scene sceneID="GIh-vM-qXB">
             <objects>
@@ -119,23 +138,49 @@
                                     <action selector="connectButton:" destination="ufe-1R-TwE" eventType="touchUpInside" id="dy0-Xd-q1V"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Roz-wB-t6v">
-                                <rect key="frame" x="16" y="93" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="lNC-2W-C67"/>
                     <connections>
                         <outlet property="textfieldConnectCode" destination="gIb-YZ-28q" id="zic-yj-cyt"/>
-                        <outlet property="textfieldGenerateCode" destination="Roz-wB-t6v" id="R4A-Ml-AUV"/>
+                        <segue destination="5ca-Xb-Mas" kind="push" identifier="segueToDriver" id="qc2-UP-jN4"/>
+                        <segue destination="r29-sJ-SLy" kind="push" identifier="segueToPassenger" id="vub-bD-OYl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmD-ab-Pv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="869" y="706"/>
+        </scene>
+        <!--Driver View Controller-->
+        <scene sceneID="qD3-cJ-DVH">
+            <objects>
+                <viewController id="5ca-Xb-Mas" customClass="DriverViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sUa-UT-mDV"/>
+                        <viewControllerLayoutGuide type="bottom" id="shp-ac-YQQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qir-do-mfc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8l-2a-gWx">
+                                <rect key="frame" x="16" y="72" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sbl-dh-oTc"/>
+                    <connections>
+                        <outlet property="labelCode" destination="s8l-2a-gWx" id="E26-uB-pLQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMx-wQ-zEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349" y="706"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vtV-J8-S2V">

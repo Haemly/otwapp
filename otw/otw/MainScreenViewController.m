@@ -34,8 +34,8 @@
 
 - (IBAction)generateButton:(id)sender {
     [[appGlobals sharedGlobals] setUsercode:[sharedFunctions generateCode]];
-    [[self textfieldGenerateCode] setText:[[appGlobals sharedGlobals] usercode]];
     [self sendGeneratedCodeToPHP];
+    [self performSegueWithIdentifier:@"segueToDriver" sender:self];
 }
 
 - (void)setCreateID {
@@ -81,7 +81,9 @@
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error2];
     NSString *responseMsg = [[NSString alloc] initWithData:POSTReply encoding:NSUTF8StringEncoding];
     NSLog(@"Account creation response: %@", responseMsg);
-
+    
+    //Segue to passenger view controller
+    [self performSegueWithIdentifier:@"segueToPassenger" sender:self];
 }
 
 - (void)setConnectID {

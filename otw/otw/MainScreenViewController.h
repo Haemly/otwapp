@@ -14,7 +14,6 @@
 @property (nonatomic) sqlite3 *database;
 @property (nonatomic) sqlite3_stmt *compiledStatement;
 
-@property (strong, nonatomic) IBOutlet UITextField *textfieldGenerateCode;
 @property (strong, nonatomic) IBOutlet UITextField *textfieldConnectCode;
 - (IBAction)generateButton:(id)sender;
 - (IBAction)connectButton:(id)sender;
