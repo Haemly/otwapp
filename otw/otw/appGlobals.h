@@ -22,5 +22,10 @@
 @property (nonatomic, strong) NSString* passengerLat;
 @property (nonatomic, strong) NSString* passengerLong;
 
+@property (nonatomic, strong) NSString* driverStartLat;
+@property (nonatomic, strong) NSString* driverStartLong;
+@property (nonatomic, strong) NSString* driverLat;
+@property (nonatomic, strong) NSString* driverLong;
+
 
 @end

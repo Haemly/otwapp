@@ -33,6 +33,10 @@
         
         _passengerLat = @"";
         _passengerLong = @"";
+        _driverStartLat = @"";
+        _driverStartLong = @"";
+        _driverLat = @"";
+        _driverLong = @"";
     }
     
     return self;

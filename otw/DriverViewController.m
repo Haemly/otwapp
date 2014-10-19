@@ -13,7 +13,10 @@
 
 @end
 
-@implementation DriverViewController
+@implementation DriverViewController {
+    CLLocationManager *locationManager;
+    BOOL initialSet;
+}
 
 static NSString *cellIdentifier;
 
@@ -64,6 +67,14 @@ static NSString *cellIdentifier;
 {
     //Hide the nav bar
     [self.navigationController setNavigationBarHidden:NO];
+    
+    // Set up location manager
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager setDelegate:self];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [locationManager requestWhenInUseAuthorization]; ;
+    [locationManager setDistanceFilter:kCLDistanceFilterNone];
+    [locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -151,6 +162,57 @@ static NSString *cellIdentifier;
     NSString *responseMsg = [[NSString alloc] initWithData:POSTReply encoding:NSUTF8StringEncoding];
     NSLog(@"Account creation response: %@", responseMsg);
 
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    if ([[[appGlobals sharedGlobals] driverStartLat] isEqualToString:@""]) {
+        [[appGlobals sharedGlobals] setDriverStartLat:[NSString stringWithFormat:@"%f", newLocation.coordinate.latitude]];
+        [[appGlobals sharedGlobals] setDriverStartLong:[NSString stringWithFormat:@"%f", newLocation.coordinate.longitude]];
+    } else if (!initialSet) {
+        [self updateDriverInitialPosition];
+        initialSet = YES;
+    }
+}
+
+- (void) updateDriverInitialPosition {
+    NSString *usercode = [[appGlobals sharedGlobals] usercode];
+    NSString *createID = [[appGlobals sharedGlobals] createID];
+    NSString *driverStartLat = [[appGlobals sharedGlobals] driverStartLat];
+    NSString *driverStartLong = [[appGlobals sharedGlobals] driverStartLong];
+    
+    //This array will hold the data being sent to php
+    NSMutableArray *phpData = [[NSMutableArray alloc] init];
+    
+    //Create object that holds data
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:usercode forKey:@"usercode"];
+    [dict setObject:createID forKey:@"createID"];
+    [dict setObject:driverStartLat forKey:@"driverStartLat"];
+    [dict setObject:driverStartLong forKey:@"driverStartLong"];
+    
+    [phpData addObject:dict];
+    
+    //Prepare data to be sent to php
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:phpData options:kNilOptions error:&error];
+    NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://otw.bobbywhite.ca/update_driver_initial_gps.php"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:postData];
+    
+    //Response
+    NSURLResponse *response;
+    NSError *error2;
+    NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error2];
+    NSString *responseMsg = [[NSString alloc] initWithData:POSTReply encoding:NSUTF8StringEncoding];
+    NSLog(@"Update Driver Initial GPS: %@", responseMsg);
 }
 
 

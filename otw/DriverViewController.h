@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface DriverViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface DriverViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *labelCode;
 
 //Add time buttons
