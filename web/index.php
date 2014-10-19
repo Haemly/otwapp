@@ -4,10 +4,11 @@
 <head>
 <script src="js/jquery-1.11.1.js"></script>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 <script>
 $(document).ready(function(){
-	$("#popout").hide();
-	$("#popout").fadeIn("slow");
+	//$("#popout").hide();
+	//$("#popout").fadeIn("slow");
 });
 </script>
 <script>
@@ -25,6 +26,7 @@ $(document).ready(function(){
 			} else{
 				//TODO connect to php file
 				$("#popout-background").fadeOut("slow");
+				//$("#content-container").css("display","inline-block");
 			}
 		});
 		var dt = new Date();
@@ -51,7 +53,19 @@ $(document).ready(function(){
 			}
 			i++;
 		});
+		setHeight();
 	});
+	
+	function setHeight(){
+		//Set the size of the div to the percent of page remaining after the control
+		//div is loaded so they scale well with no scroll bar.
+		var height = $(document).height() - 3
+		controlHeight = 64 + 3;
+		var pageHeightWithoutControl = height - 64;
+		var otherPercent = ((height - controlHeight) / height) * 100 + "%";
+		$("#map-canvas").css("height",otherPercent); //set map and event content to the remainder
+		$("#event-content").css("height",otherPercent);
+	}
 </script>
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8nP8zW5doATgHCBiJCaGe4r5cNeS1V1g&sensor=false">
