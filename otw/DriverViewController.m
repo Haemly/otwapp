@@ -46,6 +46,9 @@ static NSString *cellIdentifier;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.textLabel.text = [self.messages objectAtIndex:indexPath.row];
+    cell.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    cell.alpha = 0.90;
     return cell;
 }
 

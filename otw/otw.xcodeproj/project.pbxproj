@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C515C19019F44A8400E3D479 /* otw_splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = C515C18F19F44A8400E3D479 /* otw_splash_screen.png */; };
+		C515C19219F44EA100E3D479 /* map-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C515C19119F44EA100E3D479 /* map-background.png */; };
 		C5253A6719F2BCCF0082D339 /* appGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A6619F2BCCF0082D339 /* appGlobals.m */; };
 		C5253A6B19F2CCFE0082D339 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5253A6A19F2CCFE0082D339 /* libsqlite3.dylib */; };
 		C5253A7019F2D26B0082D339 /* InitialLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A6F19F2D26B0082D339 /* InitialLoadViewController.m */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C515C18F19F44A8400E3D479 /* otw_splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = otw_splash_screen.png; sourceTree = "<group>"; };
+		C515C19119F44EA100E3D479 /* map-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-background.png"; sourceTree = "<group>"; };
 		C5253A6519F2BCCF0082D339 /* appGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appGlobals.h; sourceTree = "<group>"; };
 		C5253A6619F2BCCF0082D339 /* appGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appGlobals.m; sourceTree = "<group>"; };
 		C5253A6A19F2CCFE0082D339 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -138,6 +142,8 @@
 		C574D0BE19F2BC3400134608 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C515C19119F44EA100E3D479 /* map-background.png */,
+				C515C18F19F44A8400E3D479 /* otw_splash_screen.png */,
 				C5253A8619F40AD30082D339 /* MobileCoreServices.framework */,
 				C5253A8419F402F60082D339 /* CoreLocation.framework */,
 				C5253A7619F2E3630082D339 /* database.sqlite */,
@@ -244,7 +250,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C515C19219F44EA100E3D479 /* map-background.png in Resources */,
 				C5253A7719F2E3630082D339 /* database.sqlite in Resources */,
+				C515C19019F44A8400E3D479 /* otw_splash_screen.png in Resources */,
 				C574D0CA19F2BC3400134608 /* Main.storyboard in Resources */,
 				C574D0CF19F2BC3400134608 /* LaunchScreen.xib in Resources */,
 				C574D0CC19F2BC3400134608 /* Images.xcassets in Resources */,
