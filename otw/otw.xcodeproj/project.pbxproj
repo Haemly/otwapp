@@ -15,6 +15,7 @@
 		C5253A7A19F2EFA80082D339 /* sharedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A7919F2EFA80082D339 /* sharedFunctions.m */; };
 		C5253A8019F332C70082D339 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A7F19F332C70082D339 /* DriverViewController.m */; };
 		C5253A8319F3333C0082D339 /* PassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5253A8219F3333C0082D339 /* PassengerViewController.m */; };
+		C5253A8519F402F60082D339 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5253A8419F402F60082D339 /* CoreLocation.framework */; };
 		C574D0C119F2BC3400134608 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C019F2BC3400134608 /* main.m */; };
 		C574D0C419F2BC3400134608 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C319F2BC3400134608 /* AppDelegate.m */; };
 		C574D0C719F2BC3400134608 /* EnterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C574D0C619F2BC3400134608 /* EnterInfoViewController.m */; };
@@ -49,6 +50,7 @@
 		C5253A7F19F332C70082D339 /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriverViewController.m; path = ../DriverViewController.m; sourceTree = "<group>"; };
 		C5253A8119F3333C0082D339 /* PassengerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerViewController.h; sourceTree = "<group>"; };
 		C5253A8219F3333C0082D339 /* PassengerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerViewController.m; sourceTree = "<group>"; };
+		C5253A8419F402F60082D339 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C574D0BB19F2BC3400134608 /* otw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = otw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C574D0BF19F2BC3400134608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C574D0C019F2BC3400134608 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5253A8519F402F60082D339 /* CoreLocation.framework in Frameworks */,
 				C5253A6B19F2CCFE0082D339 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +89,7 @@
 		C574D0B219F2BC3400134608 = {
 			isa = PBXGroup;
 			children = (
+				C5253A8419F402F60082D339 /* CoreLocation.framework */,
 				C5253A6A19F2CCFE0082D339 /* libsqlite3.dylib */,
 				C574D0BD19F2BC3400134608 /* otw */,
 				C574D0D719F2BC3400134608 /* otwTests */,

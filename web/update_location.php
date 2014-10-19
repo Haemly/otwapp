@@ -1,4 +1,4 @@
-//accept gps data from device to put in database table driver_positions
+<<!--accept gps data from device to put in database table driver_positions-->
 <?php
 
 //reference to master db connection data
@@ -6,7 +6,7 @@ require_once('DBinfo.php');
 
 //incoming code from iphone, deserialize and test for duplicate in database
 $json = file_get_contents('php://input');
-$obj = json_decode($json);
+$obj = json_decode($json, true);
 
 //variables
 $create_id = "";
@@ -15,8 +15,12 @@ $gps_long = "";
 $gps_error = ""; 
 $timestamp = "";
 $error_msg = "";
+
+//Set up database connection
+	$conn = mysql_connect($path, $username, $password) or die(mysql_error());
+	$db = mysql_select_db($db_name, $conn) or die(mysql_error());
  
- //get variables from iphone data
+ //get variables from device data
  foreach ($obj as $Field) {
 	$create_id = $Field["create_id"];
 	$gps_lat = $Field["gps_lat"];
@@ -24,25 +28,23 @@ $error_msg = "";
 	$gps_error = $Field["gps_error"];
 	$timestamp = $Field["timestamp"];
  }
+ 
+$create_id = mysql_real_escape_string($create_id);
+$gps_lat = mysql_real_escape_string($gps_lat);
+$gps_long = mysql_real_escape_string($gps_long);
+$gps_error = mysql_real_escape_string($gps_error);
+$timestamp = mysql_real_escape_string($timestamp);
 
 //test for missing data 
-if (!empty($create_id) && !empty($gps_lat) && !empty($gps_long) 
-	&& !empty($gps_error) && !empty($timestamp && validConnection()) {
+if (!empty($create_id) && !empty($gps_lat) && !empty($gps_long) && !empty($gps_error) && !empty($timestamp) {
 	
 	//Set up database connection
 	$conn = mysql_connect($path, $username, $password) or die(mysql_error());
 	$db = mysql_select_db($db_name, $conn) or die(mysql_error());
 	
-		//put new location in database driver_positions table
-		$sql_query_update = sprintf(" INSERT INTO driver_positions  
-		(create_id, gps_lat, gps_long, gps_error, timestamp) 
-		VALUES ('%s','%s','%s','%s','%s',)", 
-		mysql_real_escape_string($create_id)
-		mysql_real_escape_string($gps_lat)
-		mysql_real_escape_string($gps_long)
-		mysql_real_escape_string($gps_error)
-		mysql_real_escape_string($timestamp));
-		$response = mysql_query($sql_query_update) or die (echo "E03");
+	//put new location in database driver_positions table
+	$sql = "INSERT INTO driver_positions (create_id, gps_lat, gps_long, gps_error, timestamp) VALUES ('$create_id', '$gps_lat', '$gps_long', '$gps_error', '$timestamp')";
+	$result = mysql_query($sql) or die(echo "E03");
 		
 	} else {
 	//say what data is missing
@@ -59,7 +61,7 @@ function validConnection() {
 
 	//Check if valid connection
 	$sql = "SELECT active FROM connected_devices WHERE usercode = '$usercode'";
-	$result = mysql_query($sql) or die(mysql_error());
+	$result = mysql_query($sql) or die(echo "E03");
 	
 	$active;
 	

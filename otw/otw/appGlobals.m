@@ -30,6 +30,8 @@
         _usercode = @"";
         _createID = @"";
         _connectID = @"";
+        
+        _passengerLocation = @"";
     }
     
     return self;
