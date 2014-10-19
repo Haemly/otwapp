@@ -3,14 +3,10 @@
 
 <head>
 <script src="js/jquery-1.11.1.js"></script>
+<script src="js/googleMaps.js"></script>
+<script src="js/thingsjs"></script>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
-<script>
-$(document).ready(function(){
-	//$("#popout").hide();
-	//$("#popout").fadeIn("slow");
-});
-</script>
 <script>
 	$(document).ready(function(){
 		//temp code cuz its too long to type
@@ -26,7 +22,6 @@ $(document).ready(function(){
 			} else{
 				//TODO connect to php file
 				$("#popout-background").fadeOut("slow");
-				//$("#content-container").css("display","inline-block");
 			}
 		});
 		var dt = new Date();
@@ -67,19 +62,41 @@ $(document).ready(function(){
 		$("#event-content").css("height",otherPercent);
 	}
 </script>
-<script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8nP8zW5doATgHCBiJCaGe4r5cNeS1V1g&sensor=false">
-</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8nP8zW5doATgHCBiJCaGe4r5cNeS1V1g&sensor=false">
+ </script>
 <script type="text/javascript">
-  function initialize() {
-	var mapOptions = {
-	  center: { lat: 46.600, lng: -60.500},
-	  zoom: 6
+	var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
+	var map;
+
+	function initialize() {
+		directionsDisplay = new google.maps.DirectionsRenderer();
+		var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+		var mapOptions = {
+		zoom:7,
+		center: chicago
 	};
-	var map = new google.maps.Map(document.getElementById('map-canvas'),
-		mapOptions);
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	directionsDisplay.setMap(map);
+}
+
+	function calcRoute(){
+		var request = {
+			origin: "Sydney,NS",
+			destination: "Toronto,ON",
+			travelMode: google.maps.TravelMode.DRIVING,
+			unitSystem: google.maps.UnitSystem.METRIC,
+			//provideRouteAlternatives: Boolean,
+			avoidHighways: false,
+			avoidTolls: false
+		};
+		directionsService.route(request, function(result, status){
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(result);
+			}
+		});
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 </head>
@@ -98,7 +115,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	<div id="content-container">
+	<div id="content-container" onmouseover="calcRoute()">
 		<div id="control-content">
 			<div id="control-label"><div id="control-label-text">Controls</div></div>
 			<div id="button-cluster">
