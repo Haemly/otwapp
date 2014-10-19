@@ -36,7 +36,7 @@
 
 	$(document).ready(function(){
 		//temp code cuz its too long to type
-		$("#input").val("5bcdabde75f5f0599054");
+		$("#input").val("599b27f53b3dd7f79120");
 		
 		$("#go-button").click(function(){
 			var code = $("#input").val(); //user code
@@ -119,11 +119,15 @@
 			success: function(msg) {
 				data = JSON.parse(msg);
 				for (var i = 0; i < data.length; i++) {
-					var time = timeConverter(data[i].timestamp);
-					if(i % 2 == 0){
-						$("#event-content").append("<div class=\"event\">" + time + " - " + data[i].text + "</div>");
-					} else if(i % 2 != 0){
-						$("#event-content").append("<div class=\"event2\">" + time + " - " + data[i].text + "</div>");
+					var time = timeConverter(data[i].timestamp);					
+					if(data[i].who == 0 && i % 2 == 0){
+						$("#event-content").append("<div class=\"event\"><div class=\"event-green\">" + time + " - " + data[i].text + "</div></div>");
+					} else if(data[i].who == 0 && i % 2 != 0){
+						$("#event-content").append("<div class=\"event2\"><div class=\"event-green\">" + time + " - " + data[i].text + "</div></div>");
+					} else if(data[i].who == 1 && i % 2 == 0){
+						$("#event-content").append("<div class=\"event\"><div class=\"event-red\">" + time + " - " + data[i].text + "</div></div>");
+					} else if(data[i].who == 1 && i % 2 != 0){
+						$("#event-content").append("<div class=\"event2\"><div class=\"event-red\">" + time + " - " + data[i].text + "</div></div>");
 					}
 				}
 			}
@@ -172,7 +176,7 @@
 		directionsDisplay = new google.maps.DirectionsRenderer();
 		var chicago = new google.maps.LatLng(41.850033, -87.6500523);
 		var mapOptions = {
-		zoom:7,
+		zoom:10,
 		center: chicago
 	};
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);

@@ -234,6 +234,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', end
 	background-color: #C0C0C0;
 }
 
+.event-green{
+	color: green;
+}
+
+.event-red{
+	color: red;
+}
+
 /* highlight selection color */
 ::selection {
 	background: #B0E0E6; /* Safari */

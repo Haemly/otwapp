@@ -116,7 +116,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', end
 }
 
 #control-content{
-	height: 20%;
+	height: 10%;
 	width: 100%;
 	border-bottom-style: dashed;
 	border-bottom-width: 0.2em;
@@ -135,7 +135,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 #map-canvas{
-	height: 50%;
+	height: 60%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -153,34 +153,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #button-cluster{
 	height: 100%;
 	width: 70%;
-	margin: 0 auto 0 auto;
+	margin: -0.1em auto 0 auto;
+	padding-left: 8em;
 	overflow: hidden;
 }
 
 #control-label{
 	float: left;
+	padding-right: 1em;
 	width: 9em;
 	height: 100%;
 	display: inline;
 }
 
 #control-label-text{
-	margin: 0.3em 0 0 0.7em;
-	font-size: 2em;
+	margin: 0.5em 0 0 0.7em;
+	font-size: 4em;
 	text-align: center;
 }
 
 .control-buttons{
 	display: inline-block;
-	width:9em;
-	height:3em;
-	margin: 0.5em 1em 0 auto;
+	width:6em;
+	height:2em;
+	margin: 0.5em 1em 0 1em;
 	color:#333;
 	line-height:2;
 	text-align:center;
 	text-decoration:none;
 	font-weight:900;
-	font-size: 1em;
+	font-size: 3em;
 	background-color: red;
 	border-style: solid;
 	border-color: black;
@@ -212,7 +214,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', end
 }
 
 .inner-button-text{
-	padding-top: 0.5em;
+	padding-top: 0.1em;
 }
 
 #event-title{
@@ -237,6 +239,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', end
 	display: block;
 	background-color: #C0C0C0;
 	font-size: 3em;
+}
+
+.event-green{
+	color: green;
+}
+
+.event-red{
+	color: red;
 }
 
 /* highlight selection color */
