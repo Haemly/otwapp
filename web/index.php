@@ -35,8 +35,16 @@
 	}
 
 	$(document).ready(function(){
+		
+		//fade if not mobile
+		if(!isMobile.any()){
+			$("#content-container").hide();
+			$("#popout-background").hide();
+			$("#popout-background").fadeIn("slow");
+			$("#content-container").fadeIn("slow");
+		}
 		//temp code cuz its too long to type
-		$("#input").val("599b27f53b3dd7f79120");
+		$("#input").val("bc7abe370934bcb4a516");
 		
 		$("#go-button").click(function(){
 			var code = $("#input").val(); //user code
@@ -53,25 +61,6 @@
 				}
 			}
 			thing(code);
-			/*var dataString = "usercode=" + code;
-
-			$.ajax({
-				type: "POST",
-				url: "/ajax_retrieve_events.php",
-				data: dataString,
-				async: false, 
-				success: function(msg) {
-					data = JSON.parse(msg);
-					for (var i = 0; i < data.length; i++) {
-						var time = timeConverter(data[i].timestamp);
-						if(i % 2 == 0){
-							$("#event-content").append("<div class=\"event\">" + time + " - " + data[i].text + "</div>");
-						} else if(i % 2 != 0){
-							$("#event-content").append("<div class=\"event2\">" + time + " - " + data[i].text + "</div>");
-						}
-					}
-				}
-			});*/
 		});
 		var i = 0;
 		$("#wait").click(function(){
@@ -171,22 +160,45 @@
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
 	var map;
+	var dLat;
+	var dLong;
+	var pLat;
+	var pLong;
 
 	function initialize() {
 		directionsDisplay = new google.maps.DirectionsRenderer();
 		var chicago = new google.maps.LatLng(41.850033, -87.6500523);
 		var mapOptions = {
-		zoom:10,
+		zoom:9,
 		center: chicago
 	};
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	directionsDisplay.setMap(map);
 }
-
+	function getCords(){
+		var code = $("#input").val(); //user code
+		var dataString = "usercode=" + code;
+		$.ajax({
+			type: "POST",
+			url: "/ajax_retrieve_gps.php",
+			data: dataString,
+			async: false, 
+			success: function(msg) {
+				data = JSON.parse(msg);
+				dLat = data[0].driverStartLat;
+				dLong = data[0].driverStartLong;
+				pLat = data[0].passengerLat;
+				pLong = data[0].passengerLong;
+				
+				console.log(dLat + " " + dLong + " " + pLat + " " + pLong);
+			}
+		});
+	}
 	function calcRoute(){
+		getCords();
 		var request = {
-			origin: "Sydney,NS",
-			destination: "Toronto,ON",
+			origin: new google.maps.LatLng(dLat, dLong),
+			destination: new google.maps.LatLng(pLat, pLong),
 			travelMode: google.maps.TravelMode.DRIVING,
 			unitSystem: google.maps.UnitSystem.METRIC,
 			//provideRouteAlternatives: Boolean,

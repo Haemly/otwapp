@@ -31,10 +31,14 @@ input{
 }
 
 #popout{
-	background-color: white;
+	background-image:url('../images/otw_splash_screen_web_B.png');
+	background-repeat: no-repeat;
 	height: 400px;
 	width: 400px;
 	margin: 10% auto 0 auto;
+	border-style: dashed;
+	border-width: 0.5em;
+	border-color: black;
 }
 
 #popout-message{
@@ -46,6 +50,7 @@ input{
 	padding-top: 1em;
 	font-size: 3em;
 	text-align: center;
+	font-weight: bold;
 }
 
 #input-container{
