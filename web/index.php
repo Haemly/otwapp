@@ -3,24 +3,76 @@
 
 <head>
 <script src="js/jquery-1.11.1.js"></script>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+<!--<link rel="stylesheet" type="text/css" href="css/styles.css">-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 <script>
+	//Check if connected device is mobile
+	var isMobile = {
+		Android: function() {
+			return navigator.userAgent.match(/Android/i);
+		},
+		BlackBerry: function() {
+			return navigator.userAgent.match(/BlackBerry/i);
+		},
+		iOS: function() {
+			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+		},
+		Opera: function() {
+			return navigator.userAgent.match(/Opera Mini/i);
+		},
+		Windows: function() {
+			return navigator.userAgent.match(/IEMobile/i);
+		},
+		any: function() {
+			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+		}
+	};
+	if( isMobile.any() ){
+		$("link[rel=stylesheet]").attr({href : "css/styles-mobile.css"});
+
+	} else {
+		$("link[rel=stylesheet]").attr({href : "css/styles.css"});
+	}
+
 	$(document).ready(function(){
 		//temp code cuz its too long to type
-		$("#input").val("12345678901234567890");
+		$("#input").val("29ce827cae5b1d3d4029");
 		
 		$("#go-button").click(function(){
-			var code = $("#input").val();
-
+		var code = $("#input").val(); //user code
 			if(code.length != 20){
 				$("#input-error").text("Code should be 20 alphanumeric characters");
+				alert(code.length);
 			} else if( /[^a-zA-Z0-9]/.test(code)){
 				$("#input-error").text("Invalid characters in code");
 			} else{
-				//TODO connect to php file
-				$("#popout-background").fadeOut("slow");
+				if(isMobile.any()){
+					$("#popout-background").hide();
+				} else {
+					
+					$("#popout-background").fadeOut("slow");
+				}
 			}
+			
+			var dataString = "usercode=" + code;
+
+			$.ajax({
+				type: "POST",
+				url: "/ajax_retrieve_events.php",
+				data: dataString,
+				async: false, 
+				success: function(msg) {
+					data = JSON.parse(msg);
+					for (var i = 0; i < data.length; i++) {
+						var time = timeConverter(data[i].timestamp);
+						if(i % 2 == 0){
+							$("#event-content").append("<div class=\"event\">" + time + " - " + data[i].text + "</div>");
+						} else if(i % 2 != 0){
+							$("#event-content").append("<div class=\"event2\">" + time + " - " + data[i].text + "</div>");
+						}
+					}
+				}
+			});
 		});
 		var dt = new Date();
 		var dtHour = dt.getHours();
@@ -46,8 +98,24 @@
 			}
 			i++;
 		});
-		setHeight();
+		
+		if( !isMobile.any()){
+			setHeight();
+		}
 	});
+	
+	function timeConverter(UNIX_timestamp){
+		var a = new Date(UNIX_timestamp*1000);
+		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		var year = a.getFullYear();
+		var month = months[a.getMonth()];
+		var date = a.getDate();
+		var hour = a.getHours();
+		var min = a.getMinutes();
+		var sec = a.getSeconds();
+		var time = hour + ':' + min ;
+		return time;
+	}
 	
 	function setHeight(){
 		//Set the size of the div to the percent of page remaining after the control
