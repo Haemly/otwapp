@@ -241,3 +241,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', end
 ::-moz-selection {
 	background: #B0E0E6; /* Firefox */
 }
+
+/* remove blue outline when selecting textfields */
+textarea:focus, input:focus{
+    outline: 0;
+}
