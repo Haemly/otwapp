@@ -181,6 +181,10 @@
                                 <rect key="frame" x="16" y="362" width="288" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5ca-Xb-Mas" id="Dgf-ER-gKJ"/>
+                                    <outlet property="delegate" destination="5ca-Xb-Mas" id="zlb-Db-Ev8"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1FR-eB-3OX">
                                 <rect key="frame" x="16" y="154" width="288" height="200"/>
@@ -266,6 +270,7 @@
                     <navigationItem key="navigationItem" id="sbl-dh-oTc"/>
                     <connections>
                         <outlet property="labelCode" destination="s8l-2a-gWx" id="E26-uB-pLQ"/>
+                        <outlet property="messageTableView" destination="1rA-4c-lPF" id="muQ-iu-Tky"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CMx-wQ-zEA" userLabel="First Responder" sceneMemberID="firstResponder"/>

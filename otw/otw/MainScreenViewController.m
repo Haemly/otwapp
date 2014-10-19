@@ -127,8 +127,6 @@
         NSLog(@"Error: %s", sqlite3_errmsg(_database));
     }
     sqlite3_close(_database);
-    
-    NSLog(@"%@", firstName);
 
     //This array will hold the data being sent to php
     NSMutableArray *phpData = [[NSMutableArray alloc] init];
@@ -164,6 +162,6 @@
     NSError *error2;
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error2];
     NSString *responseMsg = [[NSString alloc] initWithData:POSTReply encoding:NSUTF8StringEncoding];
-    NSLog(@"Account creation response: %@", responseMsg);
+    NSLog(@"Code generation response: %@", responseMsg);
 }
 @end

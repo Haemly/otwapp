@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DriverViewController : UIViewController
+@interface DriverViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UILabel *labelCode;
 
 //Add time buttons
@@ -19,5 +19,6 @@
 - (IBAction)plus15:(id)sender;
 - (IBAction)plus30:(id)sender;
 
-
+@property (nonatomic, strong) NSArray *messages;
+@property (strong, nonatomic) IBOutlet UITableView *messageTableView;
 @end

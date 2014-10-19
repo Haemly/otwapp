@@ -15,9 +15,16 @@
 
 @implementation DriverViewController
 
+static NSString *cellIdentifier;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //Populate pre-determined messages
+    self.messages = [[NSArray alloc] initWithObjects:@"Stuck in traffic", @"Stopping at store", @"Running late", @"Almost there", nil];
+    cellIdentifier = @"rowCell";
+    [self.messageTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
     
     //Set label to have the generated code
     [self setGeneratedCodeLabel];
@@ -27,6 +34,21 @@
     label.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap)];
     [label addGestureRecognizer:tapGesture];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.messages count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.textLabel.text = [self.messages objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self addEvent:[[self messages] objectAtIndex:indexPath.row]];
+    NSLog(@"Event added");
 }
 
 - (void)labelTap {
@@ -88,6 +110,44 @@
     NSString *responseMsg = [[NSString alloc] initWithData:POSTReply encoding:NSUTF8StringEncoding];
     
     NSLog(@"%@", responseMsg);
+}
+
+- (void)addEvent:(NSString *)string {
+    //This array will hold the data being sent to php
+    NSMutableArray *phpData = [[NSMutableArray alloc] init];
+    
+    NSString *usercode = [[appGlobals sharedGlobals] usercode];
+    NSString *timestamp = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]];
+    
+    //Create object that holds data
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:usercode forKey:@"usercode"];
+    [dict setObject:string forKey:@"text"];
+    [dict setObject:timestamp forKey:@"timestamp"];
+    
+    [phpData addObject:dict];
+    
+    //Prepare data to be sent to php
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:phpData options:kNilOptions error:&error];
+    NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://otw.bobbywhite.ca/add_event.php"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:postData];
+    
+    //Response
+    NSURLResponse *response;
+    NSError *error2;
+    NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error2];
+    NSString *responseMsg = [[NSString alloc] initWithData:POSTReply encoding:NSUTF8StringEncoding];
+    NSLog(@"Account creation response: %@", responseMsg);
+
 }
 
 
