@@ -118,12 +118,15 @@ static NSString *cellIdentifier;
     
     NSString *usercode = [[appGlobals sharedGlobals] usercode];
     NSString *timestamp = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]];
+    NSString *who = @"0";
     
     //Create object that holds data
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:usercode forKey:@"usercode"];
     [dict setObject:string forKey:@"text"];
+    [dict setObject:who forKey:@"who"];
     [dict setObject:timestamp forKey:@"timestamp"];
+    
     
     [phpData addObject:dict];
     

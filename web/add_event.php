@@ -12,18 +12,20 @@
 	//variables
 	$usercode = "";
 	$text = "";
+	$who = "";
 	$timestamp = "";
 	 
 	//get variables from iphone data
 	foreach ($obj as $Field) {
 		$usercode = $Field["usercode"];
 		$text = $Field["text"];
+		$who = $Field["who"];
 		$timestamp = $Field["timestamp"];
 	}
 	
 	echo "here";
 	
-	$sql = "INSERT INTO events (usercode, text, done, active, timestamp) VALUES ('$usercode', '$text', '0', '1', '$timestamp')";
+	$sql = "INSERT INTO events (usercode, text, who, done, active, timestamp) VALUES ('$usercode', '$text', '$who', '0', '1', '$timestamp')";
 	$result = mysql_query($sql) or die(mysql_error());
 	
 	mysql_close($conn);

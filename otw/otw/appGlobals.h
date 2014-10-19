@@ -19,7 +19,8 @@
 @property (nonatomic, strong) NSString* createID;
 @property (nonatomic, strong) NSString* connectID;
 
-@property (nonatomic, strong) NSString* passengerLocation;
+@property (nonatomic, strong) NSString* passengerLat;
+@property (nonatomic, strong) NSString* passengerLong;
 
 
 @end

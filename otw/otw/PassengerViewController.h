@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface PassengerViewController : UIViewController <CLLocationManagerDelegate> {
-    CLLocationManager *locationManager;
-}
+@interface PassengerViewController : UIViewController <CLLocationManagerDelegate>
+- (IBAction)button:(id)sender;
+
 @end

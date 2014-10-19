@@ -31,7 +31,8 @@
         _createID = @"";
         _connectID = @"";
         
-        _passengerLocation = @"";
+        _passengerLat = @"";
+        _passengerLong = @"";
     }
     
     return self;
