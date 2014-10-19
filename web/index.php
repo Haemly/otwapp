@@ -3,8 +3,6 @@
 
 <head>
 <script src="js/jquery-1.11.1.js"></script>
-<script src="js/googleMaps.js"></script>
-<script src="js/thingsjs"></script>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 <script>
