@@ -135,7 +135,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 #map-canvas{
-	height: 30%;
+	height: 50%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -147,6 +147,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	width: 100%;
 	background-color: white;
 	float: left;
+	overflow: scroll;
 }
 
 #button-cluster{
@@ -228,12 +229,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', end
 	padding: 0 0 0 5px;
 	display: block;
 	background-color: #FFFFFF;
+	font-size: 3em;
 }
 
 .event2{
 	padding: 0 0 0 5px;
 	display: block;
 	background-color: #C0C0C0;
+	font-size: 3em;
 }
 
 /* highlight selection color */

@@ -36,13 +36,12 @@
 
 	$(document).ready(function(){
 		//temp code cuz its too long to type
-		$("#input").val("29ce827cae5b1d3d4029");
+		$("#input").val("5bcdabde75f5f0599054");
 		
 		$("#go-button").click(function(){
-		var code = $("#input").val(); //user code
+			var code = $("#input").val(); //user code
 			if(code.length != 20){
 				$("#input-error").text("Code should be 20 alphanumeric characters");
-				alert(code.length);
 			} else if( /[^a-zA-Z0-9]/.test(code)){
 				$("#input-error").text("Invalid characters in code");
 			} else{
@@ -53,8 +52,8 @@
 					$("#popout-background").fadeOut("slow");
 				}
 			}
-			
-			var dataString = "usercode=" + code;
+			thing(code);
+			/*var dataString = "usercode=" + code;
 
 			$.ajax({
 				type: "POST",
@@ -72,22 +71,24 @@
 						}
 					}
 				}
-			});
+			});*/
 		});
-		var dt = new Date();
-		var dtHour = dt.getHours();
-		if(dtHour > 12){
-			dtHour -= 12;
-		}
-		var time = dtHour + ":" + dt.getMinutes();
 		var i = 0;
 		$("#wait").click(function(){
-			if(i % 2 == 0){
-				$("#event-content").append("<div class=\"event\">Wait requested at " + time + ".</div>");
-			} else if(i % 2 != 0){
-				$("#event-content").append("<div class=\"event2\">Wait requested at " + time + ".</div>");
-			}
-			i++;
+			var code = $("#input").val(); //user code
+			var date = new Date();
+			date = date.getTime();
+			var dataString = "usercode=" + code + "&text=" + "Wait" + "&timestamp=" + date/1000;
+			$.ajax({
+				type: "POST",
+				url: "/ajax_add_event.php",
+				data: dataString,
+				async: false, 
+				success: function(msg) {
+
+				}
+			});
+			thing(code);
 		});
 		
 		$("#continue").click(function(){
@@ -104,6 +105,32 @@
 		}
 	});
 	
+	//function displays all events in the event or event2 class
+	//input: code
+	function thing(code){
+		var dataString = "usercode=" + code;
+		$(".event").remove();
+		$(".event2").remove();
+		$.ajax({
+			type: "POST",
+			url: "/ajax_retrieve_events.php",
+			data: dataString,
+			async: false, 
+			success: function(msg) {
+				data = JSON.parse(msg);
+				for (var i = 0; i < data.length; i++) {
+					var time = timeConverter(data[i].timestamp);
+					if(i % 2 == 0){
+						$("#event-content").append("<div class=\"event\">" + time + " - " + data[i].text + "</div>");
+					} else if(i % 2 != 0){
+						$("#event-content").append("<div class=\"event2\">" + time + " - " + data[i].text + "</div>");
+					}
+				}
+			}
+		});
+	}
+	
+	//Function to convert a unix timestamp into a readable time
 	function timeConverter(UNIX_timestamp){
 		var a = new Date(UNIX_timestamp*1000);
 		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -113,6 +140,12 @@
 		var hour = a.getHours();
 		var min = a.getMinutes();
 		var sec = a.getSeconds();
+		if(min < 10){
+			min = "0" + min;
+		}
+		if(hour > 12){
+			hour -= 12;
+		}
 		var time = hour + ':' + min ;
 		return time;
 	}
